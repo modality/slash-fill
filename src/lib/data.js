@@ -53,12 +53,15 @@ export function layer2(L1, L2, L3) {
 export function layer3(L1, L2, L3) {
     if (L3 == 1) {
         if (L1 == 1 || L2 == 1) {
+            // Hermits will not appear when other settlements exist
             return `Danger.`
         }
         if (L2 >= 9 && L2 <= 12) {
+            // Hermits will not appear alongside weird scenic features
             return `Danger.`
         }
         if (L1 < 9) {
+            // Hermits will only appear alongside regular scenic features
             return `Danger.`
         }
         if ((L1 + L2) % 2 == 1) {

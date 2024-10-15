@@ -13,14 +13,17 @@ const Container = styled.div`
   border-width: 0 1px;
   padding: 2em;
   box-sizing: border-box;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    zoom: 200%;
     width: 100%;
+    max-width: 100%;
+    border: none;
   }
 `;
 
 const ButtonSection = styled.section`
   margin-top: 3em;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     text-align: center;
   }
 `;
@@ -67,8 +70,8 @@ export function App(props) {
       </div>
       <section>
         <h2>Hex Contents</h2>
-        {contents.map((c) => (
-          <p>{c}</p>
+        {contents.map((c, idx) => (
+          <p key={idx}>{c}</p>
         ))}
       </section>
       <ButtonSection>
