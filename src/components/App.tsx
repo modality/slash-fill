@@ -11,18 +11,23 @@ const Container = styled.div`
   background: white;
   border: solid 1px darkolivegreen;
   border-width: 0 1px;
-`;
-
-const Horizontal = styled.div`
-  width: 100%;
-`;
-
-const Header = styled.div`
-  padding: 2em 2em 0;
-`;
-
-const Section = styled.section`
   padding: 2em;
+  box-sizing: border-box;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const ButtonSection = styled.section`
+  margin-top: 3em;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+const Button = styled.button`
+  width: 20em;
+  height: 4em;
 `;
 
 export function App(props) {
@@ -38,54 +43,37 @@ export function App(props) {
   const fill2 = layer2(L1, L2, L3);
   const fill3 = layer3(L1, L2, L3);
 
-  // coalesce Nothings.
-  const contents: string[] = [];
-  const EMPTY = "Nothing.";
-
-  if (fill1 == EMPTY && fill2 == EMPTY && fill3 == EMPTY) {
-    contents.push(fill1);
-  } else {
-    if (fill1 != EMPTY) {
-      contents.push(fill1);
-    }
-    if (fill2 != EMPTY) {
-      contents.push(fill2);
-    }
-    if (fill3 != EMPTY) {
-      contents.push(fill3);
-    }
-  }
+  const contents: string[] = [
+    `Layer 1 (${L1}): ${fill1}`,
+    `Layer 2 (${L2}): ${fill2}`,
+    `Layer 3 (${L3}): ${fill3}`,
+  ];
 
   return (
     <Container>
-      <Header>
+      <div>
         <h1>Slasher's Hex Fill Procedure</h1>
         <p>
-          A random hexfill generator based on Slasherepoch's hexfill procedure,
-          found{" "}
+          Random hex contents based on Slasherepoch's hex fill procedure, found{" "}
           <a href="https://slasherepoch.bearblog.dev/hex-fill-procedure/">
             here
           </a>
-          .<br />
+          .
+        </p>
+        <p>
           Software by Michael Hansen can be found{" "}
           <a href="https://github.com/modality/slash-fill">here</a>.
         </p>
-      </Header>
-      <Horizontal>
-        <Section>
-          <h2>Dice Result</h2>
-          <p>Layer 1: {L1}</p>
-          <p>Layer 2: {L2}</p>
-          <p>Layer 3: {L3}</p>
-          <button onClick={reroll}>Reroll</button>
-        </Section>
-        <Section>
-          <h2>Hex Contents</h2>
-          {contents.map((c) => (
-            <span>{c} </span>
-          ))}
-        </Section>
-      </Horizontal>
+      </div>
+      <section>
+        <h2>Hex Contents</h2>
+        {contents.map((c) => (
+          <p>{c}</p>
+        ))}
+      </section>
+      <ButtonSection>
+        <Button onClick={reroll}>Roll 3d12</Button>
+      </ButtonSection>
     </Container>
   );
 }

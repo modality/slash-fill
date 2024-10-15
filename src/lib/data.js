@@ -55,6 +55,12 @@ export function layer3(L1, L2, L3) {
         if (L1 == 1 || L2 == 1) {
             return `Danger.`
         }
+        if (L2 >= 9 && L2 <= 12) {
+            return `Danger.`
+        }
+        if (L1 < 9) {
+            return `Danger.`
+        }
         if ((L1 + L2) % 2 == 1) {
             return `Hermit (political exile).`
         }
