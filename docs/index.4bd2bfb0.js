@@ -9012,6 +9012,8 @@ function $8869c7c21d568530$export$1a76ccf9d983ff95(L1, L2, L3) {
 function $8869c7c21d568530$export$93a0101dc8eb8306(L1, L2, L3) {
     if (L3 == 1) {
         if (L1 == 1 || L2 == 1) return `Danger.`;
+        if (L2 >= 9 && L2 <= 12) return `Danger.`;
+        if (L1 < 9) return `Danger.`;
         if ((L1 + L2) % 2 == 1) return `Hermit (political exile).`;
         return `Hermit.`;
     } else if (L3 >= 2 && L3 <= 7) return `Nothing.`;
@@ -9031,15 +9033,21 @@ const $698364edfda1aa3f$var$Container = (0, $30b99df1ebf5b94e$export$2e2bcd8739a
   background: white;
   border: solid 1px darkolivegreen;
   border-width: 0 1px;
-`;
-const $698364edfda1aa3f$var$Horizontal = (0, $30b99df1ebf5b94e$export$2e2bcd8739ae039).div`
-  width: 100%;
-`;
-const $698364edfda1aa3f$var$Header = (0, $30b99df1ebf5b94e$export$2e2bcd8739ae039).div`
-  padding: 2em 2em 0;
-`;
-const $698364edfda1aa3f$var$Section = (0, $30b99df1ebf5b94e$export$2e2bcd8739ae039).section`
   padding: 2em;
+  box-sizing: border-box;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+const $698364edfda1aa3f$var$ButtonSection = (0, $30b99df1ebf5b94e$export$2e2bcd8739ae039).section`
+  margin-top: 3em;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+const $698364edfda1aa3f$var$Button = (0, $30b99df1ebf5b94e$export$2e2bcd8739ae039).button`
+  width: 20em;
+  height: 4em;
 `;
 function $698364edfda1aa3f$export$86fbec116b87613f(props) {
     const [L1, L2, L3, reroll] = (0, $8ff9c34845305c1a$export$2e2bcd8739ae039)();
@@ -9053,32 +9061,31 @@ function $698364edfda1aa3f$export$86fbec116b87613f(props) {
     const fill1 = (0, $8869c7c21d568530$export$9af88c9efe7c55bc)(L1, L2, L3);
     const fill2 = (0, $8869c7c21d568530$export$1a76ccf9d983ff95)(L1, L2, L3);
     const fill3 = (0, $8869c7c21d568530$export$93a0101dc8eb8306)(L1, L2, L3);
-    // coalesce Nothings.
-    const contents = [];
-    const EMPTY = "Nothing.";
-    if (fill1 == EMPTY && fill2 == EMPTY && fill3 == EMPTY) contents.push(fill1);
-    else {
-        if (fill1 != EMPTY) contents.push(fill1);
-        if (fill2 != EMPTY) contents.push(fill2);
-        if (fill3 != EMPTY) contents.push(fill3);
-    }
+    const contents = [
+        `Layer 1 (${L1}): ${fill1}`,
+        `Layer 2 (${L2}): ${fill2}`,
+        `Layer 3 (${L3}): ${fill3}`
+    ];
     return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)($698364edfda1aa3f$var$Container, {
         children: [
-            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)($698364edfda1aa3f$var$Header, {
+            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("div", {
                 children: [
                     /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
                         children: "Slasher's Hex Fill Procedure"
                     }),
                     /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("p", {
                         children: [
-                            "A random hexfill generator based on Slasherepoch's hexfill procedure, found",
+                            "Random hex contents based on Slasherepoch's hex fill procedure, found",
                             " ",
                             /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("a", {
                                 href: "https://slasherepoch.bearblog.dev/hex-fill-procedure/",
                                 children: "here"
                             }),
-                            ".",
-                            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("br", {}),
+                            "."
+                        ]
+                    }),
+                    /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("p", {
+                        children: [
                             "Software by Michael Hansen can be found",
                             " ",
                             /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("a", {
@@ -9090,51 +9097,21 @@ function $698364edfda1aa3f$export$86fbec116b87613f(props) {
                     })
                 ]
             }),
-            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)($698364edfda1aa3f$var$Horizontal, {
+            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("section", {
                 children: [
-                    /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)($698364edfda1aa3f$var$Section, {
-                        children: [
-                            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h2", {
-                                children: "Dice Result"
-                            }),
-                            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("p", {
-                                children: [
-                                    "Layer 1: ",
-                                    L1
-                                ]
-                            }),
-                            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("p", {
-                                children: [
-                                    "Layer 2: ",
-                                    L2
-                                ]
-                            }),
-                            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("p", {
-                                children: [
-                                    "Layer 3: ",
-                                    L3
-                                ]
-                            }),
-                            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("button", {
-                                onClick: reroll,
-                                children: "Reroll"
-                            })
-                        ]
+                    /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h2", {
+                        children: "Hex Contents"
                     }),
-                    /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)($698364edfda1aa3f$var$Section, {
-                        children: [
-                            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h2", {
-                                children: "Hex Contents"
-                            }),
-                            contents.map((c)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)("span", {
-                                    children: [
-                                        c,
-                                        " "
-                                    ]
-                                }))
-                        ]
-                    })
+                    contents.map((c)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("p", {
+                            children: c
+                        }))
                 ]
+            }),
+            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)($698364edfda1aa3f$var$ButtonSection, {
+                children: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)($698364edfda1aa3f$var$Button, {
+                    onClick: reroll,
+                    children: "Roll 3d12"
+                })
             })
         ]
     });
@@ -9150,4 +9127,4 @@ const $3da87ddc4a220fcd$var$appElement = document.getElementById("app");
 (0, $4723f549251dd88b$exports.render)(/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $397165d39040ce89$export$2e2bcd8739ae039), {}), $3da87ddc4a220fcd$var$appElement);
 
 
-//# sourceMappingURL=index.06e0dda1.js.map
+//# sourceMappingURL=index.4bd2bfb0.js.map
